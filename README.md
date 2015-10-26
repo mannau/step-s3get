@@ -1,4 +1,6 @@
-# s3sync
+# s3get
+
+[![wercker status](https://app.wercker.com/status/fc5024866777cab943474d3c6ad246d8/m "wercker status")](https://app.wercker.com/project/bykey/fc5024866777cab943474d3c6ad246d8)
 
 Forked from wercker/s3cmd and adjusted for s3cmd get
 
