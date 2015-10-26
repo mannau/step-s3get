@@ -17,7 +17,7 @@ set_auth() {
 main() {
   set_auth
 
-  info 'starting s3 synchronisation'
+  info 'starting s3 get'
 
   if [ ! -n "$WERCKER_S3GET_KEY_ID" ]; then
     fail 'missing or empty option key_id, please check wercker.yml'
@@ -31,7 +31,6 @@ main() {
     fail 'missing or empty option bucket_url, please check wercker.yml'
   fi
 
-  source_files="$WERCKER_ROOT/$WERCKER_S3GET_SOURCE_FILES"
   if cd "$source_dir";
   then
       debug "changed directory $source_dir, content is: $(ls -l)"
@@ -40,7 +39,7 @@ main() {
   fi
 
   set +e
-  local GET="$WERCKER_STEP_ROOT/s3cmd get --verbose $WERCKER_S3SYNC_BUCKET_URL/$source_files"
+  local GET="$WERCKER_STEP_ROOT/s3cmd get --verbose --recursive $WERCKER_S3GET_BUCKET_URL ."
   debug "$GET"
   local get_output=$($GET)
 
